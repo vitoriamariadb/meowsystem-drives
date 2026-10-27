@@ -2,6 +2,7 @@
 
 use crate::config::Config;
 use crate::fl;
+use crate::tema::{Cor, Tema};
 use cosmic::cosmic_config::{self, CosmicConfigEntry};
 use cosmic::iced::Length;
 use cosmic::iced::{Limits, Subscription, window::Id};
@@ -15,6 +16,7 @@ pub struct AppModel {
     core: cosmic::Core,
     popup: Option<Id>,
     config: Config,
+    tema: Tema,
 }
 
 #[derive(Debug, Clone)]
@@ -52,10 +54,12 @@ impl cosmic::Application for AppModel {
                     Err((_errors, config)) => config,
                 })
                 .unwrap_or_default(),
+            tema: Tema::load(Self::APP_ID),
             ..Default::default()
         };
 
-        (app, Task::none())
+        let tema = app.aplicar_tema(cosmic::theme::active().cosmic().is_dark, false);
+        (app, tema)
     }
 
     fn on_close_requested(&self, id: Id) -> Option<Message> {
@@ -63,9 +67,7 @@ impl cosmic::Application for AppModel {
     }
 
     fn view(&self) -> Element<'_, Self::Message> {
-        self.core
-            .applet
-            .icon_button("media-eject-symbolic")
+        crate::tema::botao(&self.core.applet, "media-eject-symbolic", self.tinta())
             .on_press(Message::TogglePopup)
             .into()
     }
@@ -135,7 +137,8 @@ impl cosmic::Application for AppModel {
                 return if let Some(p) = self.popup.take() {
                     cosmic::surface::surface_task(cosmic::surface::action::destroy_popup(p))
                 } else {
-                    cosmic::surface::surface_task(cosmic::surface::action::app_popup(
+                    let tema = self.reler_tema();
+                    let abrir = cosmic::surface::surface_task(cosmic::surface::action::app_popup(
                         |_| Default::default(),
                         |app: &mut AppModel| {
                             let new_id = Id::unique();
@@ -155,7 +158,8 @@ impl cosmic::Application for AppModel {
                             popup_settings
                         },
                         None,
-                    ))
+                    ));
+                    Task::batch([tema, abrir])
                 };
             }
             Message::PopupClosed(id) => {
@@ -167,7 +171,47 @@ impl cosmic::Application for AppModel {
         Task::none()
     }
 
+    fn system_theme_update(
+        &mut self,
+        _keys: &[&'static str],
+        new_theme: &cosmic::cosmic_theme::Theme,
+    ) -> Task<cosmic::Action<Self::Message>> {
+        self.aplicar_tema(new_theme.is_dark, false)
+    }
+
+    fn system_theme_mode_update(
+        &mut self,
+        _keys: &[&'static str],
+        mode: &cosmic::cosmic_theme::ThemeMode,
+    ) -> Task<cosmic::Action<Self::Message>> {
+        self.aplicar_tema(mode.is_dark, false)
+    }
+
     fn style(&self) -> Option<cosmic::iced::theme::Style> {
         Some(cosmic::applet::style())
+    }
+}
+
+impl AppModel {
+    fn aplicar_tema(&self, dark: bool, antes: bool) -> Task<cosmic::Action<Message>> {
+        match self.tema.cosmic(dark) {
+            Some(theme) => cosmic::command::set_theme(theme),
+            None if antes => cosmic::command::set_theme(self.core.system_theme().clone()),
+            None => Task::none(),
+        }
+    }
+
+    fn reler_tema(&mut self) -> Task<cosmic::Action<Message>> {
+        let novo = Tema::load(<Self as cosmic::Application>::APP_ID);
+        if novo == self.tema {
+            return Task::none();
+        }
+        let antes = self.tema.cosmic(true).is_some();
+        self.tema = novo;
+        self.aplicar_tema(cosmic::theme::active().cosmic().is_dark, antes)
+    }
+
+    fn tinta(&self) -> Option<Cor> {
+        self.tema.cor("tinta")
     }
 }

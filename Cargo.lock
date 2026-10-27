@@ -941,22 +941,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "meowsystem-drives"
-version = "0.1.2"
-dependencies = [
- "drives",
- "i18n-embed",
- "i18n-embed-fl",
- "lfs-core",
- "libcosmic",
- "notify-rust",
- "open",
- "procfs",
- "rust-embed",
- "udev",
-]
-
-[[package]]
 name = "cosmic-freedesktop-icons"
 version = "0.4.0"
 source = "git+https://github.com/pop-os/freedesktop-icons#ab4c57b8e416c6af9297cb04d101889896fd9a92"
@@ -3134,6 +3118,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "488016bfae457b036d996092f6cb448677611ce4449e970ceaf42695203f218a"
 dependencies = [
  "autocfg",
+]
+
+[[package]]
+name = "meowsystem-drives"
+version = "0.1.2"
+dependencies = [
+ "drives",
+ "i18n-embed",
+ "i18n-embed-fl",
+ "lfs-core",
+ "libcosmic",
+ "log",
+ "notify-rust",
+ "open",
+ "procfs",
+ "rust-embed",
+ "serde_json",
+ "udev",
 ]
 
 [[package]]
