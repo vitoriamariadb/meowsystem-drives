@@ -2,6 +2,11 @@
 Name=Drives
 Name[cs]=Disky
 Name[pl]=Dyski
+Name[pt]=Discos
+Name[pt_BR]=Discos
+Comment=Manage mounted drives from the panel
+Comment[pt]=Gerencie os discos montados pelo painel
+Comment[pt_BR]=Gerencie os discos montados pelo painel
 Exec=meowsystem-drives
 Terminal=false
 Type=Application

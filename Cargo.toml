@@ -2,9 +2,10 @@
 name = "meowsystem-drives"
 version = "0.1.2"
 edition = "2024"
+authors = ["Jonathan Capps (upstream)", "Vitória Maria", "André Farias"]
 license = "GPL-3.0-only"
-description = "An applet for the COSMIC desktop to manage mounted drives"
-repository = "https://github.com/cosmic-utils/cosmic-ext-applet-drives"
+description = "An applet for the COSMIC desktop to manage mounted drives. A fork of cosmic-utils/cosmic-ext-applet-drives themed by MeowSystem."
+repository = "https://github.com/vitoriamariadb/meowsystem-drives"
 
 [dependencies]
 drives = "0.6.1"

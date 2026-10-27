@@ -55,6 +55,16 @@ install:
     install -Dm0644 resources/{{ appid }}.metainfo.xml {{ appdata-dst }}
     install -Dm0644 {{ icon-svg-src }} {{ icon-svg-dst }}
 
+install-user: build-release
+    install -Dm0755 {{ bin-src }} "$HOME/.local/bin/{{ name }}"
+    mkdir -p "$HOME/.local/share/applications"
+    sed "s|^Exec=.*|Exec=$HOME/.local/bin/{{ name }}|" resources/{{ appid }}.desktop > "$HOME/.local/share/applications/{{ appid }}.desktop"
+    install -Dm0644 {{ icon-svg-src }} "$HOME/.local/share/icons/hicolor/scalable/apps/{{ appid }}-symbolic.svg"
+    install -Dm0644 resources/{{ appid }}.metainfo.xml "$HOME/.local/share/metainfo/{{ appid }}.metainfo.xml"
+
+uninstall-user:
+    rm -f "$HOME/.local/bin/{{ name }}" "$HOME/.local/share/applications/{{ appid }}.desktop" "$HOME/.local/share/icons/hicolor/scalable/apps/{{ appid }}-symbolic.svg" "$HOME/.local/share/metainfo/{{ appid }}.metainfo.xml"
+
 # Uninstalls installed files
 uninstall:
     rm -f {{ bin-dst }} {{ desktop-dst }} {{ icon-svg-dst }}

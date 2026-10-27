@@ -1,3 +1,13 @@
+# Discos (Drives)
+
+O applet de discos removíveis para o [COSMIC](https://system76.com/cosmic), com as cores do theme pack do [MeowSystem](https://github.com/vitoriamariadb/MeowSystem).
+
+## De onde vem
+
+Os Discos são um fork do **[cosmic-ext-applet-drives](https://github.com/cosmic-utils/cosmic-ext-applet-drives)**, de **Jonathan Capps** e da comunidade cosmic-utils. A lista de discos, o abrir no COSMIC Files e o desmontar são trabalho deles. Este fork muda o nome (`meowsystem-drives`, app id `io.github.meowsystem.Drives`) e acrescenta a extensão de tema do MeowSystem, descrita em [INTEGRACAO.md](INTEGRACAO.md). A licença continua a do original, GPL-3.0-only ([LICENSE](LICENSE)). Autoria do fork: Vitória Maria e André Farias.
+
+---
+
 # Removable Drives Applet (for the COSMIC™ Desktop)
 
 An applet for the COSMIC™ desktop to manage your drives. This is in very early stages but is functional as it stands.
@@ -15,31 +25,14 @@ An applet for the COSMIC™ desktop to manage your drives. This is in very early
 - More robust unmounting process (currently it's just running the umount command and hoping the user has permission to do so)
 - Use your default file browser when opening the drive, rather than forcing COSMIC Files
 
-## Flatpak installation
-
-By far the best way to install the applet is through the official COSMIC™ Flatpak repository. Firstly, ensure you have Flatpak itself installed. You then should be able to search for and install the applet from the COSMIC™ Store, under the Applets category. Alternatively, you can ensure you have the correct repo enabled and install through the command line.
-
-```sh
-flatpak remote-add --if-not-exists --user cosmic https://apt.pop-os.org/cosmic/cosmic.flatpakrepo
-flatpak install io.github.meowsystem.Drives
-```
-
-## Arch User Repository installation
-
-The applet can be installed directly from [the AUR](https://aur.archlinux.org/packages/meowsystem-drives-git), and this will get you very latest code and not be tied to tagged releases. You will need `base-devel` and `git` if you don't have them already.
-
-```sh
-sudo pacman -S base-devel git
-git clone https://aur.archlinux.org/meowsystem-drives-git.git
-cd meowsystem-drives-git && makepkg -si
-```
-
 ## Manual installation
+
+The MeowSystem builds and installs it from the commit pinned in `assets/extensoes/drives.pino`. By hand, `just install-user` puts it in `~/.local`, no root. System-wide:
 
 You're going to need to make sure you have the ability to compile Rust binaries, along with `git` and `just`
 
 ```sh
-git clone https://github.com/cosmic-utils/meowsystem-drives && cd meowsystem-drives
+git clone https://github.com/vitoriamariadb/meowsystem-drives && cd meowsystem-drives
 just build-release
 sudo just install
 ```

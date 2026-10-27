@@ -10,32 +10,36 @@
   <developer_name>Jonathan Capps</developer_name>
   <update_contact>hello@cappsy.dev</update_contact>
   <url type="homepage">
-    https://github.com/cosmic-utils/cosmic-ext-applet-drives
+    https://github.com/vitoriamariadb/meowsystem-drives
   </url>
   <url type="bugtracker">
-    https://github.com/cosmic-utils/cosmic-ext-applet-drives/issues
+    https://github.com/vitoriamariadb/meowsystem-drives/issues
   </url>
   <url type="contribute">
-    https://github.com/cosmic-utils/cosmic-ext-applet-drives
+    https://github.com/vitoriamariadb/meowsystem-drives
   </url>
   <name>Drives</name>
   <name xml:lang="cs">Disky</name>
   <name xml:lang="pl">Dyski</name>
+  <name xml:lang="pt-BR">Discos</name>
   <summary>An applet for the COSMIC desktop to manage mounted drives</summary>
   <summary xml:lang="cs">Applet prostředí COSMIC pro správu připojených disků</summary>
   <summary xml:lang="pl">Aplet dla środowiska COSMIC do zarządzania zamontowanymi dyskami</summary>
+  <summary xml:lang="pt-BR">Applet do COSMIC para gerenciar os discos montados</summary>
   <icon type="remote" width="64" height="64" scale="1">
-    https://github.com/cosmic-utils/cosmic-ext-applet-drives/raw/main/resources/io.github.meowsystem.Drives-symbolic.svg
+    https://github.com/vitoriamariadb/meowsystem-drives/raw/main/resources/io.github.meowsystem.Drives-symbolic.svg
   </icon>
-  <url type="vcs-browser">https://github.com/cosmic-utils/cosmic-ext-applet-drives</url>
+  <url type="vcs-browser">https://github.com/vitoriamariadb/meowsystem-drives</url>
   <description>
     <p>Manage, access and unmount your removable drives from a simple applet.</p>
+    <p>Fork of the cosmic-utils Drives applet, themed by MeowSystem: the popup takes the colours the theme pack puts in an optional extension file.</p>
     <p xml:lang="cs">Správa, přístup a odpojování vašich odpojitelných disků pomocí jednoduchého appletu.</p>
     <p xml:lang="pl">Zarządzaj, uzyskaj dostęp oraz odmontuj swoje dyski zewnętrzne z tego prostego apletu.</p>
   </description>
   <launchable type="desktop-id">io.github.meowsystem.Drives.desktop</launchable>
   <provides>
     <id>com.system76.CosmicApplet</id>
+    <binary>meowsystem-drives</binary>
   </provides>
   <requires>
     <display_length compare="ge">360</display_length>
