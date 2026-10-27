@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <component type="desktop-application">
-  <id>dev.cappsy.CosmicExtAppletDrives</id>
+  <id>io.github.meowsystem.Drives</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-only</project_license>
   <project_group>COSMIC</project_group>
@@ -25,7 +25,7 @@
   <summary xml:lang="cs">Applet prostředí COSMIC pro správu připojených disků</summary>
   <summary xml:lang="pl">Aplet dla środowiska COSMIC do zarządzania zamontowanymi dyskami</summary>
   <icon type="remote" width="64" height="64" scale="1">
-    https://github.com/cosmic-utils/cosmic-ext-applet-drives/raw/main/resources/icons/hicolor/scalable/apps/icon.svg
+    https://github.com/cosmic-utils/cosmic-ext-applet-drives/raw/main/resources/io.github.meowsystem.Drives-symbolic.svg
   </icon>
   <url type="vcs-browser">https://github.com/cosmic-utils/cosmic-ext-applet-drives</url>
   <description>
@@ -33,7 +33,7 @@
     <p xml:lang="cs">Správa, přístup a odpojování vašich odpojitelných disků pomocí jednoduchého appletu.</p>
     <p xml:lang="pl">Zarządzaj, uzyskaj dostęp oraz odmontuj swoje dyski zewnętrzne z tego prostego apletu.</p>
   </description>
-  <launchable type="desktop-id">dev.cappsy.CosmicExtAppletDrives.desktop</launchable>
+  <launchable type="desktop-id">io.github.meowsystem.Drives.desktop</launchable>
   <provides>
     <id>com.system76.CosmicApplet</id>
   </provides>

@@ -2,12 +2,12 @@
 Name=Drives
 Name[cs]=Disky
 Name[pl]=Dyski
-Exec=cosmic-ext-applet-drives
+Exec=meowsystem-drives
 Terminal=false
 Type=Application
 StartupNotify=true
 NotShowIn=COSMIC
-Icon=dev.cappsy.CosmicExtAppletDrives-symbolic
+Icon=io.github.meowsystem.Drives-symbolic
 Categories=COSMIC;Utility;
 Keywords=Folder;Manager;
 Keywords[pl]=Folder;Katalog;Menadżer;

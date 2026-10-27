@@ -1,5 +1,5 @@
-name := 'cosmic-ext-applet-drives'
-appid := 'dev.cappsy.CosmicExtAppletDrives'
+name := 'meowsystem-drives'
+appid := 'io.github.meowsystem.Drives'
 rootdir := ''
 prefix := '/usr'
 base-dir := absolute_path(clean(rootdir / prefix))
@@ -9,9 +9,8 @@ desktop := appid + '.desktop'
 desktop-dst := clean(rootdir / prefix) / 'share' / 'applications' / desktop
 appdata := appid + '.metainfo.xml'
 appdata-dst := clean(rootdir / prefix) / 'share' / 'appdata' / appdata
-icons-src := 'resources' / 'icons' / 'hicolor'
 icons-dst := clean(rootdir / prefix) / 'share' / 'icons' / 'hicolor'
-icon-svg-src := icons-src / 'scalable' / 'apps' / 'icon.svg'
+icon-svg-src := 'resources' / appid + '-symbolic.svg'
 icon-svg-dst := icons-dst / 'scalable' / 'apps' / appid + '-symbolic.svg'
 
 # Default recipe which runs `just build-release`
@@ -52,8 +51,8 @@ run *args:
 # Installs files
 install:
     install -Dm0755 {{ bin-src }} {{ bin-dst }}
-    install -Dm0644 resources/app.desktop {{ desktop-dst }}
-    install -Dm0644 resources/app.metainfo.xml {{ appdata-dst }}
+    install -Dm0644 resources/{{ appid }}.desktop {{ desktop-dst }}
+    install -Dm0644 resources/{{ appid }}.metainfo.xml {{ appdata-dst }}
     install -Dm0644 {{ icon-svg-src }} {{ icon-svg-dst }}
 
 # Uninstalls installed files
@@ -71,7 +70,7 @@ flatpak-builder:
         --install-deps-from=flathub \
         --repo=repo \
         flatpak-out \
-        dev.cappsy.CosmicExtAppletDrives.json
+        io.github.meowsystem.Drives.json
 
 # Update flatpak cargo-sources.json
 flatpak-cargo-sources:

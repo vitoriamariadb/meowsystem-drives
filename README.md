@@ -7,7 +7,7 @@ An applet for the COSMIC™ desktop to manage your drives. This is in very early
 - List of all mounted drives (removable USB and internal drives mounted by the user)
 - Click the drive to open the mount in COSMIC Files
 - Click the unmount button to unmount the drive before removable
-  
+
 ### Possible future additions
 
 - Network mounts
@@ -21,17 +21,17 @@ By far the best way to install the applet is through the official COSMIC™ Flat
 
 ```sh
 flatpak remote-add --if-not-exists --user cosmic https://apt.pop-os.org/cosmic/cosmic.flatpakrepo
-flatpak install dev.cappsy.CosmicExtAppletDrives
+flatpak install io.github.meowsystem.Drives
 ```
 
 ## Arch User Repository installation
 
-The applet can be installed directly from [the AUR](https://aur.archlinux.org/packages/cosmic-ext-applet-drives-git), and this will get you very latest code and not be tied to tagged releases. You will need `base-devel` and `git` if you don't have them already.
+The applet can be installed directly from [the AUR](https://aur.archlinux.org/packages/meowsystem-drives-git), and this will get you very latest code and not be tied to tagged releases. You will need `base-devel` and `git` if you don't have them already.
 
 ```sh
 sudo pacman -S base-devel git
-git clone https://aur.archlinux.org/cosmic-ext-applet-drives-git.git
-cd cosmic-ext-applet-drives-git && makepkg -si
+git clone https://aur.archlinux.org/meowsystem-drives-git.git
+cd meowsystem-drives-git && makepkg -si
 ```
 
 ## Manual installation
@@ -39,7 +39,7 @@ cd cosmic-ext-applet-drives-git && makepkg -si
 You're going to need to make sure you have the ability to compile Rust binaries, along with `git` and `just`
 
 ```sh
-git clone https://github.com/cosmic-utils/cosmic-ext-applet-drives && cd cosmic-ext-applet-drives
+git clone https://github.com/cosmic-utils/meowsystem-drives && cd meowsystem-drives
 just build-release
 sudo just install
 ```

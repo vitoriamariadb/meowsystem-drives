@@ -941,7 +941,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "cosmic-ext-applet-drives"
+name = "meowsystem-drives"
 version = "0.1.2"
 dependencies = [
  "drives",

@@ -8,7 +8,7 @@ use cosmic::iced::{Limits, Subscription, window::Id};
 use cosmic::prelude::*;
 use cosmic::widget;
 use cosmic::widget::{column, row};
-use cosmic_ext_applet_drives::{DeviceType, get_all_devices, run_command};
+use meowsystem_drives::{DeviceType, get_all_devices, run_command};
 
 #[derive(Default)]
 pub struct AppModel {
@@ -30,7 +30,7 @@ impl cosmic::Application for AppModel {
     type Executor = cosmic::executor::Default;
     type Flags = ();
     type Message = Message;
-    const APP_ID: &'static str = "dev.cappsy.CosmicExtAppletDrives";
+    const APP_ID: &'static str = "io.github.meowsystem.Drives";
 
     fn core(&self) -> &cosmic::Core {
         &self.core

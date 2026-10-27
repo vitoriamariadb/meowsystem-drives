@@ -1,5 +1,5 @@
 {
-  "id": "dev.cappsy.CosmicExtAppletDrives",
+  "id": "io.github.meowsystem.Drives",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "25.08",
   "sdk": "org.freedesktop.Sdk",
@@ -19,20 +19,20 @@
   "build-options": {
     "append-path": "/usr/lib/sdk/rust-stable/bin",
     "env": {
-      "CARGO_HOME": "/run/build/cosmic-ext-applet-drives/cargo"
+      "CARGO_HOME": "/run/build/meowsystem-drives/cargo"
     }
   },
   "modules": [
     {
-      "name": "cosmic-ext-applet-drives",
+      "name": "meowsystem-drives",
       "buildsystem": "simple",
       "build-commands": [
         "cargo --offline fetch --manifest-path Cargo.toml --verbose",
         "cargo --offline build --release --features flatpak --verbose",
-        "install -Dm755 ./target/release/cosmic-ext-applet-drives -t /app/bin",
-        "install -Dm644 ./resources/app.desktop /app/share/applications/dev.cappsy.CosmicExtAppletDrives.desktop",
-        "install -Dm644 ./resources/app.metainfo.xml /app/share/metainfo/dev.cappsy.CosmicExtAppletDrives.metainfo.xml",
-        "install -Dm644 ./resources/icons/hicolor/scalable/apps/icon.svg /app/share/icons/hicolor/scalable/apps/dev.cappsy.CosmicExtAppletDrives-symbolic.svg"
+        "install -Dm755 ./target/release/meowsystem-drives -t /app/bin",
+        "install -Dm644 ./resources/io.github.meowsystem.Drives.desktop /app/share/applications/io.github.meowsystem.Drives.desktop",
+        "install -Dm644 ./resources/io.github.meowsystem.Drives.metainfo.xml /app/share/metainfo/io.github.meowsystem.Drives.metainfo.xml",
+        "install -Dm644 ./resources/io.github.meowsystem.Drives-symbolic.svg /app/share/icons/hicolor/scalable/apps/io.github.meowsystem.Drives-symbolic.svg"
       ],
       "sources": [
         {
