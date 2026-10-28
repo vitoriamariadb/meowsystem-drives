@@ -3122,7 +3122,7 @@ dependencies = [
 
 [[package]]
 name = "meowsystem-drives"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "drives",
  "i18n-embed",
