@@ -87,11 +87,22 @@ impl cosmic::Application for AppModel {
         } else {
             for device in devices {
                 content_list = content_list.push(row!(
-                    column!(widget::icon::from_name(match device.device_type() {
-                        DeviceType::USB => "drive-harddisk-usb-symbolic",
-                        DeviceType::Disk => "disks-symbolic",
-                        DeviceType::Network => "network-workgroup-symbolic",
-                    }))
+                    column!(
+                        widget::icon(
+                            widget::icon::from_name(match device.device_type() {
+                                DeviceType::USB => "drive-harddisk-usb-symbolic",
+                                DeviceType::Disk => "disks-symbolic",
+                                DeviceType::Network => "network-workgroup-symbolic",
+                            })
+                            .symbolic(true)
+                            .into()
+                        )
+                        .class(cosmic::theme::Svg::Custom(std::rc::Rc::new(
+                            |theme: &cosmic::Theme| cosmic::iced::widget::svg::Style {
+                                color: Some(theme.cosmic().accent_color().into()),
+                            }
+                        )))
+                    )
                     .padding([7, 5]),
                     column!(
                         widget::button::text(device.label())
